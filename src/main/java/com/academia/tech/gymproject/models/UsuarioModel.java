@@ -3,12 +3,17 @@ package com.academia.tech.gymproject.models;
 import com.academia.tech.gymproject.enums.StatusUsuario;
 import com.academia.tech.gymproject.enums.TipoUsuario;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "TB_USUARIOS")
 public class UsuarioModel implements Serializable {
     private static final long serialVersionUID = 324212258106824631L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private TipoUsuario tipoUsuario;
     private StatusUsuario statusUsuario;

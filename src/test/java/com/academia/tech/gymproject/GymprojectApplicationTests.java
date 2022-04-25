@@ -8,17 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class GymprojectApplicationTests {
 
-	@Test
-	void contextLoads() {
-
-		UsuarioModel usuarioModel = new UsuarioModel();
-
-		usuarioModel.setNome("Daniel");
-		usuarioModel.setTipoUsuario(TipoUsuario.ALUNO);
-		System.out.println(usuarioModel);
-		System.out.println(usuarioModel.getNome());
-
 
 	}
 
-}
+
