@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/gym-project
     username: postgres
-    password: Feitan4242564
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: create-drop
