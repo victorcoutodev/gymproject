@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios") //mapeamento base para toda a classe
@@ -36,5 +37,18 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioModel);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getOne(@PathVariable("id") Long id){
+        Optional<UsuarioModel> usuarioModelOptional = usuarioService.findById(id);
+        if(!usuarioModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioModelOptional.get());
+    }
 
+    //Adicionar paginacao e filtros
+    @GetMapping
+    public ResponseEntity<Object> getAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll());
+    }
 }
