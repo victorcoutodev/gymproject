@@ -7,8 +7,8 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "TB_TREINOS")
@@ -24,7 +24,7 @@ public class TreinoModel implements Serializable {
     private LocalDate dataCriacao;
     @OneToMany(mappedBy = "treino", fetch = FetchType.LAZY )
     @Fetch(FetchMode.SUBSELECT)
-    private List<SerieModel> series = new ArrayList<SerieModel>();
+    private Set<SerieModel> series = new HashSet<>();
     @OneToOne
     private UsuarioModel professor;
 
@@ -60,11 +60,11 @@ public class TreinoModel implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
-    public List<SerieModel> getSeries() {
+    public Set<SerieModel> getSeries() {
         return series;
     }
 
-    public void setSeries(List<SerieModel> series) {
+    public void setSeries(Set<SerieModel> series) {
         this.series = series;
     }
 
